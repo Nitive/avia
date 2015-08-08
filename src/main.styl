@@ -1,4 +1,103 @@
 bg_color = #fdfffb
+border_color = #daccaf
+cross_color = alpha(#d7caaf, .3)
 
 body
 	background bg_color
+	font 16px "Helvetica Neue"
+
+.wrap
+	margin 0 auto
+
+.dark-text
+	color #4a4240
+.flight-number
+	color #0d60c0
+.red-text
+	color #d21d54
+
+.aviaboard
+	color #676566
+	text-shadow 0 1px 1px #daccaf
+	text-align center
+	border-radius 5px
+	border-spacing 0
+	overflow hidden
+
+	&__head
+		@extend .dark-text
+		tr
+			height 60px
+		th
+			font-weight 400
+			padding 0 10px
+			background-image: linear-gradient(0deg, #eee3cb 0%, #f2eed5 100%);
+			border solid 2px border_color
+			border-right 0
+			&:first-child
+				border-top-left-radius 5px
+			&:last-child
+				border-top-right-radius 5px
+				border-right @border
+
+	tfoot td
+		&:first-child
+			border-bottom-left-radius 5px
+		&:last-child
+			border-bottom-right-radius 5px
+
+	&__time
+		font-size 1.25em
+	&__date
+		font-size .6em
+
+	&__company
+		position relative
+		height 60px
+		// padding 10px 0
+		&-logo
+			absolute top right
+			padding 5px
+		&-name
+			display block
+			width calc(100% - 50px)
+	&__airport
+		// display none
+		&:before
+			content ' / '
+	&__plane span
+		// &:first-child
+		// 	display none
+		&:last-child
+			display none
+
+	&__row
+		background alpha(#f2eed5, .1)
+		&:nth-child(even)
+			background alpha(#f2eed5, .4)
+		cursor pointer
+		&:hover
+			background cross_color
+
+		td
+			padding 0 10px
+			border solid 1px border_color
+			border-top 0
+			border-right 0
+			&:last-child
+				border-right @border
+
+			&:hover
+				position relative
+				&:after
+					content ''
+					absolute top -10000px left
+					size 100% 20000px
+					background cross_color
+					z-index -1
+
+td.departure
+	background url(images/departure.svg) no-repeat center
+	background-size auto 30px
+	// Перезаписть .aviaboard__row td
+	padding 0 40px !important
