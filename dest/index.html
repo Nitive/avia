@@ -43,8 +43,7 @@
 				</tr>
 			</thead>
 
-			<tbody>
-				<tr class="aviaboard__header-space"></tr>
+			<tbody class="aviaboard__tbody aviaboard__tbody--opened">
 				<tr class="aviaboard__row">
 					<td class="flight-number-text">P25801</td>
 					<td>
@@ -66,7 +65,20 @@
 						<img class="aviaboard__company-logo" src="http://placehold.it/50x50" height="50" width="50">
 					</td>
 				</tr>
+				<tr class="aviaboard__full">
+					<td colspan="7">
+						<div class="aviaboard__info">
+							<img src="http://placehold.it/100x100" alt="">
+							<h3>Новосибирск → Москва / Домодедово</h3>
+							<p><b>Авиакомпания</b>: Hainan Airlines</p>
+							<p><b>Тип воздушного судна</b>: Airbus</p>
+							<p><b>В пути</b>: 1 ч 40 мин</p>
+						</div>
+					</td>
+				</tr>
+			</tbody>
 
+			<tbody class="aviaboard__tbody">
 				<tr class="aviaboard__row">
 					<td class="flight-number-text">P25801</td>
 					<td>
@@ -88,7 +100,9 @@
 						<img class="aviaboard__company-logo" src="http://placehold.it/50x50" height="50" width="50">
 					</td>
 				</tr>
+			</tbody>
 
+			<tbody class="aviaboard__tbody">
 				<tr class="aviaboard__row">
 					<td class="flight-number-text">P25801</td>
 					<td>
@@ -110,7 +124,9 @@
 						<img class="aviaboard__company-logo" src="http://placehold.it/50x50" height="50" width="50">
 					</td>
 				</tr>
+			</tbody>
 
+			<tbody class="aviaboard__tbody">
 				<tr class="aviaboard__row">
 					<td class="flight-number-text">P25801</td>
 					<td>
@@ -132,7 +148,9 @@
 						<img class="aviaboard__company-logo" src="http://placehold.it/50x50" height="50" width="50">
 					</td>
 				</tr>
+			</tbody>
 
+			<tbody class="aviaboard__tbody">
 				<tr class="aviaboard__row">
 					<td class="flight-number-text">P25801</td>
 					<td>
@@ -154,7 +172,9 @@
 						<img class="aviaboard__company-logo" src="http://placehold.it/50x50" height="50" width="50">
 					</td>
 				</tr>
+			</tbody>
 
+			<tbody class="aviaboard__tbody">
 				<tr class="aviaboard__row">
 					<td class="flight-number-text">P25801</td>
 					<td>
@@ -176,7 +196,9 @@
 						<img class="aviaboard__company-logo" src="http://placehold.it/50x50" height="50" width="50">
 					</td>
 				</tr>
+			</tbody>
 
+			<tbody class="aviaboard__tbody">
 				<tr class="aviaboard__row">
 					<td class="flight-number-text">P25801</td>
 					<td>
@@ -198,7 +220,9 @@
 						<img class="aviaboard__company-logo" src="http://placehold.it/50x50" height="50" width="50">
 					</td>
 				</tr>
+			</tbody>
 
+			<tbody class="aviaboard__tbody">
 				<tr class="aviaboard__row">
 					<td class="flight-number-text">P25801</td>
 					<td>
@@ -220,7 +244,9 @@
 						<img class="aviaboard__company-logo" src="http://placehold.it/50x50" height="50" width="50">
 					</td>
 				</tr>
+			</tbody>
 
+			<tbody class="aviaboard__tbody">
 				<tr class="aviaboard__row">
 					<td class="flight-number-text">P25801</td>
 					<td>
@@ -242,7 +268,9 @@
 						<img class="aviaboard__company-logo" src="http://placehold.it/50x50" height="50" width="50">
 					</td>
 				</tr>
+			</tbody>
 
+			<tbody class="aviaboard__tbody">
 				<tr class="aviaboard__row">
 					<td class="flight-number-text">P25801</td>
 					<td>
@@ -264,7 +292,9 @@
 						<img class="aviaboard__company-logo" src="http://placehold.it/50x50" height="50" width="50">
 					</td>
 				</tr>
+			</tbody>
 
+			<tbody class="aviaboard__tbody">
 				<tr class="aviaboard__row">
 					<td class="flight-number-text">P25801</td>
 					<td>
@@ -286,7 +316,9 @@
 						<img class="aviaboard__company-logo" src="http://placehold.it/50x50" height="50" width="50">
 					</td>
 				</tr>
+			</tbody>
 
+			<tbody class="aviaboard__tbody">
 				<tr class="aviaboard__row">
 					<td class="flight-number-text">P25801</td>
 					<td>
@@ -308,6 +340,9 @@
 						<img class="aviaboard__company-logo" src="http://placehold.it/50x50" height="50" width="50">
 					</td>
 				</tr>
+			</tbody>
+
+			<tbody class="aviaboard__tbody">
 				<tr class="aviaboard__row">
 					<td class="flight-number-text">P25801</td>
 					<td>
@@ -334,5 +369,16 @@
 		</table>
 	</div>
 	</div>
+	<script>
+		var rows = document.getElementsByClassName('aviaboard__tbody')
+		var len = rows.length
+
+		for (var i = 0; i < len; i++) {
+			rows[i].onclick = function() {
+				this.classList.toggle('aviaboard__tbody--opened')
+				console.log(this)
+			}
+		}
+	</script>
 </body>
 </html>

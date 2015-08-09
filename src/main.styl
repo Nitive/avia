@@ -13,13 +13,50 @@ nth-col-width(n, w)
 		td:nth-child({n})
 			word-break break-all
 
-
 *
 	box-sizing border-box
+	transition all .3s
+
+td
+	padding 0
+
+.aviaboard__tbody
+	img
+		float left
+		border-radius 5px
+
+	h3
+		font-weight 400
+		margin 5px 120px
+
+	p
+		margin 3px 130px
+
+	.aviaboard__info
+		text-align left
+		height 0
+		overflow hidden
+		margin-left 10px
+	&--opened
+		background #fdfdfa
+		.aviaboard__info
+			margin 10px
+			height 100px
+		tr + .aviaboard__full
+			td
+				border-bottom 2px solid border_color
+
+			// background green
+			// background #fdfdfa
+		// + tr
+		// 	border-bottom solid
+		// 	height 100px
+
 
 body
 	background bg_color
 	font 16px 'Helvetica Neue'
+	font-weight 300
 	text-align center
 
 .aviaboard__wrap2
@@ -43,6 +80,14 @@ body
 	color #0d60c0
 .red-text
 	color #d21d54
+
+tbody
+	cursor pointer
+	&:hover
+		background cross_color
+
+b
+	font-weight 400
 
 .aviaboard
 	color #676566
@@ -135,9 +180,8 @@ body
 		background alpha(#f2eed5, .1)
 		&:nth-child(even)
 			background alpha(#f2eed5, .4)
-		cursor pointer
-		&:hover
-			background cross_color
+		// &:hover
+		// 	background cross_color
 
 		// &:last-child td
 		// 	&:first-child
@@ -145,24 +189,24 @@ body
 		// 	&:last-child
 		// 		border-bottom-right-radius 5px
 
-	td
-		padding 5px 10px
-		border-right solid 1px border_color
-		border-bottom @border-right
-		&:last-child
-			border-right 0
+		td
+			padding 5px 10px
+			border-right solid 1px border_color
+			border-bottom @border-right
+			&:last-child
+				border-right 0
 
-		&:hover
-			position relative
-			&:after
-				content ''
-				absolute top -10000px left
-				size 100% 20000px
-				background cross_color
-				z-index -1
+			// &:hover
+			// 	position relative
+			// 	&:after
+			// 		content ''
+			// 		absolute top -10000px left
+			// 		size 100% 20000px
+			// 		background cross_color
+			// 		z-index -1
 
-	tr:last-child td
-		border-bottom 0
+		tr:last-child td
+			border-bottom 0
 
 
 
