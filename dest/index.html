@@ -67,12 +67,19 @@
 				</tr>
 				<tr class="aviaboard__full">
 					<td colspan="7">
-						<div class="aviaboard__info">
+						<div class="aviaboard__info-block">
 							<img src="http://placehold.it/100x100" alt="">
 							<h3>Новосибирск → Москва / Домодедово</h3>
-							<p><b>Авиакомпания</b>: Hainan Airlines</p>
-							<p><b>Тип воздушного судна</b>: Airbus</p>
-							<p><b>В пути</b>: 1 ч 40 мин</p>
+							<div class="aviaboard__info">
+								<p><b>Авиакомпания</b>: Hainan Airlines</p>
+								<p><b>Тип воздушного судна</b>: Airbus</p>
+								<p><b>В пути</b>: 1 ч 40 мин</p>
+							</div>
+							<div class="aviaboard__note">
+								<p><b>Примечание:</b></p>
+								<p>Стойки 2,3,4,15,16</p>
+								<p>Выход №4</p>
+							</div>
 						</div>
 					</td>
 				</tr>
@@ -370,13 +377,17 @@
 	</div>
 	</div>
 	<script>
-		var rows = document.getElementsByClassName('aviaboard__tbody')
-		var len = rows.length
+		var rows = document.getElementsByClassName('aviaboard__tbody');
+		var len = rows.length;
+		var prev = null;
 
 		for (var i = 0; i < len; i++) {
 			rows[i].onclick = function() {
-				this.classList.toggle('aviaboard__tbody--opened')
-				console.log(this)
+				if (prev && prev !== this)
+					prev.classList.remove('aviaboard__tbody--opened');
+				prev = this;
+
+				this.classList.toggle('aviaboard__tbody--opened');
 			}
 		}
 	</script>

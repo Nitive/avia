@@ -1,6 +1,6 @@
 bg_color = #fdfffb
 border_color = #daccaf
-cross_color = alpha(#d7caaf, .3)
+cross_color = white //alpha(#d7caaf, .3)
 width_normal = 900px
 width_small = 800px
 width_very_small = 700px
@@ -27,30 +27,31 @@ td
 
 	h3
 		font-weight 400
-		margin 5px 120px
+		margin 5px 0 0 110px
+		word-break normal
 
 	p
-		margin 3px 130px
+		margin 3px 0 0 20px
 
-	.aviaboard__info
+	.aviaboard__info-block
 		text-align left
 		height 0
 		overflow hidden
 		margin-left 10px
 	&--opened
-		background #fdfdfa
-		.aviaboard__info
+		background #fdfdfa !important
+		.aviaboard__info-block
 			margin 10px
 			height 100px
 		tr + .aviaboard__full
 			td
 				border-bottom 2px solid border_color
 
-			// background green
-			// background #fdfdfa
-		// + tr
-		// 	border-bottom solid
-		// 	height 100px
+	.aviaboard__info, .aviaboard__note
+		font-size 14px
+		display inline-block
+		width 40%
+
 
 
 body
@@ -83,6 +84,9 @@ body
 
 tbody
 	cursor pointer
+	background alpha(#f2eed5, .3)
+	&:nth-child(even)
+		background alpha(#f2eed5, .8)
 	&:hover
 		background cross_color
 
@@ -177,9 +181,6 @@ b
 				display none
 
 	&__row
-		background alpha(#f2eed5, .1)
-		&:nth-child(even)
-			background alpha(#f2eed5, .4)
 		// &:hover
 		// 	background cross_color
 
