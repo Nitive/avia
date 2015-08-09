@@ -1,17 +1,45 @@
 bg_color = #fdfffb
 border_color = #daccaf
 cross_color = alpha(#d7caaf, .3)
+width_normal = 900px
+width_small = 800px
+width_very_small = 700px
+
+nth-col-width(n, w)
+	td:nth-child({n}), th:nth-child({n})
+		width w
+		min-width w
+	@media (max-width: width_very_small)
+		td:nth-child({n})
+			word-break break-all
+
+
+*
+	box-sizing border-box
 
 body
 	background bg_color
-	font 16px "Helvetica Neue"
+	font 16px 'Helvetica Neue'
+	text-align center
 
-.wrap
-	margin 0 auto
+.aviaboard__wrap2
+	height 500px
+	height calc(100vh - 190px)
+	overflow-y auto
+
+.aviaboard__wrap
+	margin 50px auto
+	padding-top 60px
+	position relative
+	overflow hidden
+	display inline-block
+	box-shadow 0 0 30px 0 rgba(107, 94, 76, .3)
+	border-radius 5px
+	border solid 2px border_color
 
 .dark-text
 	color #4a4240
-.flight-number
+.flight-number-text
 	color #0d60c0
 .red-text
 	color #d21d54
@@ -20,56 +48,88 @@ body
 	color #676566
 	text-shadow 0 1px 1px #daccaf
 	text-align center
-	border-radius 5px
+	// border-radius 5px
 	border-spacing 0
 	overflow hidden
 
+	table-layout fixed
+
+	nth-col-width 1 100px
+	nth-col-width 2 190px
+	nth-col-width 3 80px
+	nth-col-width 4 80px
+	nth-col-width 5 140px
+	nth-col-width 6 110px
+	nth-col-width 7 140px
+
+	@media (max-width: width_normal)
+		nth-col-width 7 50px
+	@media (max-width: width_small)
+		nth-col-width 1 80px
+		nth-col-width 6 60px
+	@media (max-width: width_very_small)
+		nth-col-width 2 100px
+		nth-col-width 5 120px
+
 	&__head
+		absolute top
+		z-index 1
 		@extend .dark-text
 		tr
 			height 60px
-		th
-			font-weight 400
-			padding 0 10px
-			background-image: linear-gradient(0deg, #eee3cb 0%, #f2eed5 100%);
-			border solid 2px border_color
-			border-right 0
-			&:first-child
-				border-top-left-radius 5px
-			&:last-child
-				border-top-right-radius 5px
-				border-right @border
+	th
+		font-weight 400
+		padding 0 10px
+		background-image: linear-gradient(0deg, #eee3cb 0%, #f2eed5 100%);
 
-	tfoot td
+		border solid 1px border_color
+		border-bottom solid 2px border_color
+		border-top 0
+		// border-bottom @border-right
 		&:first-child
-			border-bottom-left-radius 5px
+			border-left 0
 		&:last-child
-			border-bottom-right-radius 5px
+			border-right 0
+
+		@media (max-width: width_normal)
+			span:first-child
+				display none
+		@media (min-width: width_normal)
+			span:last-child
+				display none
 
 	&__time
 		font-size 1.25em
 	&__date
 		font-size .6em
+		@media (max-width: width_normal)
+			display none
 
 	&__company
 		position relative
 		height 60px
-		// padding 10px 0
 		&-logo
 			absolute top right
-			padding 5px
+			top calc(50% - 25px)
+			border 5px solid transparent
+			border-radius 10px
 		&-name
 			display block
 			width calc(100% - 50px)
+			@media (max-width: width_normal)
+				display none
 	&__airport
-		// display none
+		@media (max-width: width_normal)
+			display none
 		&:before
 			content ' / '
 	&__plane span
-		// &:first-child
-		// 	display none
-		&:last-child
-			display none
+		@media (max-width: width_normal)
+			&:first-child
+				display none
+		@media (min-width: width_normal)
+			&:last-child
+				display none
 
 	&__row
 		background alpha(#f2eed5, .1)
@@ -79,25 +139,35 @@ body
 		&:hover
 			background cross_color
 
-		td
-			padding 0 10px
-			border solid 1px border_color
-			border-top 0
+		// &:last-child td
+		// 	&:first-child
+		// 		border-bottom-left-radius 5px
+		// 	&:last-child
+		// 		border-bottom-right-radius 5px
+
+	td
+		padding 5px 10px
+		border-right solid 1px border_color
+		border-bottom @border-right
+		&:last-child
 			border-right 0
-			&:last-child
-				border-right @border
 
-			&:hover
-				position relative
-				&:after
-					content ''
-					absolute top -10000px left
-					size 100% 20000px
-					background cross_color
-					z-index -1
+		&:hover
+			position relative
+			&:after
+				content ''
+				absolute top -10000px left
+				size 100% 20000px
+				background cross_color
+				z-index -1
 
-td.departure
+	tr:last-child td
+		border-bottom 0
+
+
+
+.departure
 	background url(images/departure.svg) no-repeat center
 	background-size auto 30px
-	// Перезаписть .aviaboard__row td
-	padding 0 40px !important
+	// Перезаписать .aviaboard td
+	// padding 0 40px !important
