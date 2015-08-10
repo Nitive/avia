@@ -44,6 +44,7 @@ gulp.task 'stylus', ->
 		.pipe stylus
 			use: [nib()]
 			'include css': true
+			include: ['node_modules/']
 			compress: production
 			import: ['nib']
 		.pipe gulpif production, cmq()

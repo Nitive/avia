@@ -25,14 +25,14 @@ body
 									span= item.to.city
 									if item.to.airport
 										span.aviaboard__airport= item.to.airport
-								td.departure
+								td.flight-type
 
 							else
 								td
 									span= item.from.city
 									if item.from.airport
 										span.aviaboard__airport= item.from.airport
-								td.arrival
+								td.flight-type
 
 							td
 								.aviaboard__time= item.time
@@ -57,13 +57,13 @@ body
 									.aviaboard__data
 										.aviaboard__info
 											p
-												b: Авиакомпания:
-												= ' ' + item.company.name
+												b= 'Тип воздушного судна: '
+												= item.plane.long
 											p
-												b: Тип воздушного судна:
-												= ' ' + item.plane.long
+												b= 'Авиакомпания: '
+												= item.company.name
 											p
-												b: В пути:
+												b= 'В пути: '
 												= item.flightTime
 										if item.note
 											.aviaboard__note

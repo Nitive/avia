@@ -1,0 +1,244 @@
+bg_color = #fdfffb
+border_color = #daccaf
+highlight_color = white
+
+border1 = 1px solid border_color
+border2 = 2px solid border_color
+
+fast = .3s
+
+width_normal = 900px
+width_small = 800px
+width_very_small = 700px
+
+
+
+////////////// mixins //////////////
+
+nth-col-width(n, w)
+	td:nth-child({n}), th:nth-child({n})
+		width w
+		min-width w
+	@media (max-width: width_small)
+		td:nth-child({n})
+			word-break break-all
+
+
+
+////////////// text styles //////////////
+
+.dark-text
+	color #4a4240
+.flight-number-text
+	color #0d60c0
+.red-status
+	color #d21d54
+	font-weight bolder
+
+
+.aviaboard
+	color #676566
+	text-shadow 0 1px 1px #daccaf
+	border-spacing 0
+
+	// set width of columns
+	nth-col-width 1 100px
+	nth-col-width 2 190px
+	nth-col-width 3 80px
+	nth-col-width 4 80px
+	nth-col-width 5 140px
+	nth-col-width 6 110px
+	nth-col-width 7 140px
+
+	// change width for different screens
+	@media (max-width: width_normal)
+		nth-col-width 7 50px
+	@media (max-width: width_small)
+		nth-col-width 1 80px
+		nth-col-width 6 60px
+	@media (max-width: width_very_small)
+		nth-col-width 2 100px
+		nth-col-width 5 120px
+
+
+	td
+		padding 0
+	td, th
+		transition width fast
+		box-sizing border-box
+
+
+
+	////////////// wrappers //////////////
+
+	&__wrap
+		//- margin 50px auto
+		padding-top 60px
+		position relative
+		display inline-block
+
+		// borders
+		overflow hidden
+		border-radius 5px
+		border border2
+		// border-bottom solid 1px border_color
+		box-shadow 0 0 30px 0 rgba(107, 94, 76, .3)
+
+		&-size
+			min-height 60px
+			max-height calc(100vh - 190px)
+			overflow-y auto
+
+
+
+	////////////// head //////////////
+	&__head
+		absolute top
+		tr
+			// head height
+			height 60px
+
+	th
+		font-weight bolder
+		padding 0 5px
+		background-image linear-gradient(bottom, #eee3cb, #f2eed5)
+		border border2
+
+		// reset because border already exists
+		border-top 0
+		&:first-child
+			border-left 0
+		&:last-child
+			border-right 0
+
+		// switch between long and short title
+		@media (max-width: width_normal)
+			span:first-child
+				display none
+		@media (min-width: width_normal)
+			span:last-child
+				display none
+
+
+
+	////////////// row //////////////
+	&__tbody
+		transition background fast
+		cursor pointer
+		background alpha(#f2eed5, .3)
+		&:nth-child(even)
+			background alpha(#f2eed5, .8)
+		&:hover
+			background highlight_color
+
+		img
+			float left
+			border-radius 5px
+
+		h3
+			font-weight bolder
+			margin 5px 0 0 110px
+
+		p
+			margin 3px 0 0 20px
+
+
+		.aviaboard__info-block
+			transition-property max-height, margin
+			transition-duration fast
+		&--opened
+			td
+				border-bottom border1
+
+			// rewrite hover background
+			background #fdfdfa !important
+			.aviaboard__info-block
+				margin 10px
+				max-height 150px
+
+	&__row
+		td
+			padding 5px 10px
+			border-right solid 1px border_color
+			// border-bottom @border-right
+			border-bottom @border-right
+			&:last-child
+				border-right 0
+
+
+
+	////////////// opened block //////////////
+
+	&__info-block
+		word-break normal
+		text-align left
+		max-height 0
+		overflow-y hidden
+		margin-left 10px
+
+	&__data
+		vertical-align middle
+		font-size 14px
+		display inline-block
+		width calc(100% - 100px)
+
+	&__info, &__note
+		display inline-block
+		width 50%
+	&__info:only-child
+		width 100% !important
+
+
+
+	////////////// time and date //////////////
+
+	&__time
+		font-size 1.25em
+	&__date
+		font-size .6em
+		@media (max-width: width_normal)
+			display none
+
+
+
+	////////////// aviacompany //////////////
+
+	&__company
+		// min height
+		height 60px
+		position relative
+		&-logo
+			box-sizing border-box
+			absolute right
+			padding 5px
+			// at vertical center
+			top calc(50% - 25px)
+		&-name
+			display block
+			width calc(100% - 50px)
+			@media (max-width: width_normal)
+				display none
+	&__airport
+		@media (max-width: width_normal)
+			display none
+		&:before
+			content ' / '
+	&__plane span
+		@media (max-width: width_normal)
+			&:first-child
+				display none
+		@media (min-width: width_normal)
+			&:last-child
+				display none
+
+
+
+	////////////// flight type //////////////
+
+	&--departure .flight-type
+		background url(images/departure.svg) no-repeat center
+		background-size auto 30px
+
+	&--arrival .flight-type
+		background url(images/arrival.svg) no-repeat center
+		background-size auto 30px

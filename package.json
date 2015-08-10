@@ -8,7 +8,7 @@
   },
   "author": "Samoilow Maxim <nitive@icloud.com>",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "autoprefixer-core": "^5.2.1",
     "browser-sync": "^2.8.2",
     "coffee-script": "^1.9.3",
@@ -23,6 +23,7 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-stylus": "^2.0.6",
     "nib": "^1.1.0",
+    "normalize-styl": "^3.0.3",
     "yargs": "^3.18.0"
   }
 }
