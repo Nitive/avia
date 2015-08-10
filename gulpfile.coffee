@@ -1,5 +1,8 @@
 gulp = require 'gulp'
 
+jade = require 'gulp-jade'
+data = require 'gulp-data'
+
 # css
 stylus = require 'gulp-stylus'
 cmq = require 'gulp-combine-media-queries'
@@ -15,20 +18,24 @@ plumber = require 'gulp-plumber'
 gulpif = require 'gulp-if'
 args = require('yargs').argv
 sync = require 'browser-sync'
+path = require 'path'
+fs = require 'fs'
 
 production = args.p or args.production or no
 
 paths =
-	html: './dest/*.html'
+	jade: './src/*.jade'
+	json: './src/*.json'
 	stylus: './src/*.styl'
 	deep_stylus: './src/**/*.styl'
 	dest: './dest/'
 
-gulp.task 'default', ['stylus']
+gulp.task 'default', ['jade', 'stylus']
 gulp.task 'watch', ['browser-sync'], ->
 	gulp.watch paths.deep_stylus, ['stylus']
-	gulp.watch paths.html
-		.on 'change', sync.reload
+	gulp.watch paths.jade, ['jade']
+	gulp.watch paths.json, ['jade']
+
 
 gulp.task 'stylus', ->
 	gulp.src(paths.stylus)
@@ -50,3 +57,12 @@ gulp.task 'browser-sync', ->
 	sync.init
 		server:
 			baseDir: paths.dest
+
+gulp.task 'jade', ->
+	gulp.src paths.jade
+		.pipe plumber errorHandler: notify.onError "Error: <%= error.message %>"
+		.pipe data (file) ->
+			JSON.parse fs.readFileSync "./src/#{path.basename(file.path).replace /\.jade$/, '.json'}", 'utf8'
+		.pipe jade()
+		.pipe gulp.dest './dest/'
+		.pipe sync.reload stream: true

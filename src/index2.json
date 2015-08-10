@@ -1,0 +1,100 @@
+{
+	"title": "Avia",
+	"table": {
+
+		"head": [
+			{
+				"long": "Номер рейса",
+				"short": "№"
+			},
+			{
+				"long": "Пункт отправления или назначения",
+				"short": "Город"
+			},
+			{
+				"long": "Тип",
+				"short": "Тип"
+			},
+			{
+				"long": "Время",
+				"short": "Время"
+			},
+			{
+				"long": "Статус",
+				"short": "Статус"
+			},
+			{
+				"long": "Тип судна",
+				"short": "Тип ВС"
+			},
+			{
+				"long": "Авиакомпания",
+				"short": "АК"
+			}
+		],
+
+		"data": [
+			{
+				"flightNumber": "P25801",
+				"flightTime": "1 ч 50 минут",
+				"from": {
+					"city": "Томск",
+					"airport": "Богашево"
+				},
+				"to": {
+					"city": "Москва",
+					"airport": "Внуково"
+				},
+				"departure": true,
+				"time": "19:15",
+				"date": "10.08.2015",
+				"status": {
+					"type": "red",
+					"text": "Задерживается до 19:42"
+				},
+				"plane": {
+					"long": "Boeing 737-800",
+					"short": "Б737-8"
+				},
+				"company": {
+					"name": "Россия",
+					"logo": "http://placehold.it/100x100"
+				}
+				,
+				"note": "<p>Стойки 2, 3, 4, 15, 16</p><p>Выход №4</p>"
+			},
+
+			{
+				"flightNumber": "P25801",
+				"flightTime": "1 ч 50 минут",
+				"from": {
+					"city": "Новосибирск"
+				},
+				"to": {
+					"city": "Москва",
+					"airport": "Внуково"
+				},
+				"departure": false,
+				"time": "19:15",
+				"date": "10.08.2015",
+				"status": {
+					"type": "red",
+					"text": "Задерживается до 19:42"
+				},
+				"plane": {
+					"long": "Boeing 737-800",
+					"short": "Б737-8"
+				},
+				"company": {
+					"name": "Россия",
+					"logo": "http://placehold.it/100x100"
+				}
+				,
+				"note": "<p>Стойки 2, 3, 4, 15, 16</p><p>Выход №4</p>"
+			}
+
+		]
+	}
+
+}
+

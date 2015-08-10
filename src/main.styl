@@ -9,11 +9,11 @@ nth-col-width(n, w)
 	td:nth-child({n}), th:nth-child({n})
 		width w
 		min-width w
-	@media (max-width: width_very_small)
+	@media (max-width: width_small)
 		td:nth-child({n})
 			word-break break-all
 
-*
+*, *:before, *:after
 	box-sizing border-box
 	transition all .3s
 
@@ -32,25 +32,34 @@ td
 
 	p
 		margin 3px 0 0 20px
+		word-break normal
 
 	.aviaboard__info-block
 		text-align left
-		height 0
-		overflow hidden
+		max-height 0
+		overflow-y hidden
+
 		margin-left 10px
 	&--opened
 		background #fdfdfa !important
 		.aviaboard__info-block
 			margin 10px
-			height 100px
+			max-height 150px
 		tr + .aviaboard__full
 			td
-				border-bottom 2px solid border_color
+				border-bottom 1px solid border_color
 
-	.aviaboard__info, .aviaboard__note
-		font-size 14px
-		display inline-block
-		width 40%
+.aviaboard__data
+	vertical-align middle
+	font-size 14px
+	display inline-block
+	width calc(100% - 100px)
+
+.aviaboard__info, .aviaboard__note
+	display inline-block
+	width 50%
+.aviaboard__info:only-child
+	width 100% !important
 
 
 
@@ -59,14 +68,15 @@ body
 	font 16px 'Helvetica Neue'
 	font-weight 300
 	text-align center
+	margin-top 50px
 
-.aviaboard__wrap2
-	height 500px
-	height calc(100vh - 190px)
+.aviaboard__wrap2, .aviaboard__wrap-size
+	min-height 60px
+	max-height calc(100vh - 190px)
 	overflow-y auto
 
 .aviaboard__wrap
-	margin 50px auto
+	// margin 50px auto
 	padding-top 60px
 	position relative
 	overflow hidden
@@ -74,12 +84,13 @@ body
 	box-shadow 0 0 30px 0 rgba(107, 94, 76, .3)
 	border-radius 5px
 	border solid 2px border_color
+	border-bottom solid 1px border_color
 
 .dark-text
 	color #4a4240
 .flight-number-text
 	color #0d60c0
-.red-text
+.red-text, .red-status
 	color #d21d54
 
 tbody
@@ -214,5 +225,7 @@ b
 .departure
 	background url(images/departure.svg) no-repeat center
 	background-size auto 30px
-	// Перезаписать .aviaboard td
-	// padding 0 40px !important
+
+.arrival
+	background url(images/arrival.svg) no-repeat center
+	background-size auto 30px

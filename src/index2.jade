@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+	meta(charset="utf-8")
+	title= title
+	link(rel="stylesheet", href="main.css")
+body
+	.aviaboard__wrap
+		.aviaboard__wrap-size
+			table.aviaboard
+				thead.aviaboard__head
+					tr
+						each headItem in table.head
+							th
+								span= headItem.long
+								span= headItem.short
+
+				each item in table.data
+					tbody.aviaboard__tbody(class = item.departure ? 'aviaboard--departure' : 'aviaboard--arrival')
+						tr.aviaboard__row
+							td.flight-number-text= item.flightNumber
+
+							if item.departure
+								td
+									span= item.to.city
+									if item.to.airport
+										span.aviaboard__airport= item.to.airport
+								td.departure
+
+							else
+								td
+									span= item.from.city
+									if item.from.airport
+										span.aviaboard__airport= item.from.airport
+								td.arrival
+
+							td
+								.aviaboard__time= item.time
+								.aviaboard__date= item.date
+
+							td(class = item.status.type + '-status')
+								= item.status.text
+
+							td.aviaboard__plane
+								span= item.plane.long
+								span= item.plane.short
+
+							td.aviaboard__company
+								span.aviaboard__company-name= item.company.name
+								img.aviaboard__company-logo(src=item.company.logo height=50 width=50 alt="Логотип авиакомпании")
+
+						tr.aviaboard__full
+							td(colspan=7)
+								.aviaboard__info-block
+									img(src=item.company.logo height=100 width=100 alt="Логотип авиакомпании")
+									h3= item.from.city + (item.from.airport ? ' / ' + item.from.airport : '') + ' → ' + item.to.city + (item.to.airport ? ' / ' + item.to.airport : '')
+									.aviaboard__data
+										.aviaboard__info
+											p
+												b: Авиакомпания:
+												= ' ' + item.company.name
+											p
+												b: Тип воздушного судна:
+												= ' ' + item.plane.long
+											p
+												b: В пути:
+												= item.flightTime
+										if item.note
+											.aviaboard__note
+												p
+													b: Примечание:
+													!= item.note
+
+	script(src='app.js')
