@@ -38,7 +38,7 @@ body
 								.aviaboard__time= item.time
 								.aviaboard__date= item.date
 
-							td(class = item.status.type + '-status')
+							td(class = 'flight-status--' + item.status.type)
 								= item.status.text
 
 							td.aviaboard__plane

@@ -14,7 +14,6 @@ width_very_small = 700px
 
 
 ////////////// mixins //////////////
-
 nth-col-width(n, w)
 	td:nth-child({n}), th:nth-child({n})
 		width w
@@ -26,16 +25,19 @@ nth-col-width(n, w)
 
 
 ////////////// text styles //////////////
-
-.dark-text
-	color #4a4240
 .flight-number-text
 	color #0d60c0
-.red-status
-	color #d21d54
-	font-weight bolder
+.flight-status
+	&--red
+		color #d21d54
+		font-weight bolder
+	&--green
+		color #36D11F
+		font-weight bolder
+		text-shadow 0 1px 1px white
 
 
+////////////// main //////////////
 .aviaboard
 	color #676566
 	text-shadow 0 1px 1px #daccaf
@@ -70,7 +72,6 @@ nth-col-width(n, w)
 
 
 	////////////// wrappers //////////////
-
 	&__wrap
 		//- margin 50px auto
 		padding-top 60px
@@ -136,6 +137,7 @@ nth-col-width(n, w)
 			border-radius 5px
 
 		h3
+			color #4a4240
 			font-weight bolder
 			margin 5px 0 0 110px
 
@@ -168,8 +170,8 @@ nth-col-width(n, w)
 
 
 	////////////// opened block //////////////
-
 	&__info-block
+		font-size .9em
 		word-break normal
 		text-align left
 		max-height 0
@@ -178,7 +180,6 @@ nth-col-width(n, w)
 
 	&__data
 		vertical-align middle
-		font-size 14px
 		display inline-block
 		width calc(100% - 100px)
 
@@ -191,7 +192,6 @@ nth-col-width(n, w)
 
 
 	////////////// time and date //////////////
-
 	&__time
 		font-size 1.25em
 	&__date
@@ -202,7 +202,6 @@ nth-col-width(n, w)
 
 
 	////////////// aviacompany //////////////
-
 	&__company
 		// min height
 		height 60px
@@ -234,7 +233,6 @@ nth-col-width(n, w)
 
 
 	////////////// flight type //////////////
-
 	&--departure .flight-type
 		background url(images/departure.svg) no-repeat center
 		background-size auto 30px

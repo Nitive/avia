@@ -79,8 +79,8 @@
 				"time": "19:15",
 				"date": "10.08.2015",
 				"status": {
-					"type": "red",
-					"text": "Задерживается до 19:42"
+					"type": "green",
+					"text": "По расписанию"
 				},
 				"plane": {
 					"long": "Boeing 737-800",

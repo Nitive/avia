@@ -1,6 +1,6 @@
-var rows = document.getElementsByClassName('aviaboard__tbody');
-var len = rows.length;
-var prev = null;
+var rows = document.getElementsByClassName('aviaboard__tbody'),
+	len = rows.length,
+	prev = null;
 
 for (var i = 0; i < len; i++) {
 	rows[i].onclick = function() {
