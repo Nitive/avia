@@ -8,6 +8,22 @@ body
 	.aviaboard__wrap
 		.aviaboard__wrap-size
 			table.aviaboard
+				thead.aviaboard__control
+					tr
+						td.aviaboard__control-button.aviaboard__control-button--departure
+							div
+								.aviaboard__button-departure
+								span Прилёт
+								.aviaboard__check-departure
+						td.aviaboard__control-button.aviaboard__control-button--arrival
+							div
+								.aviaboard__button-arrival
+								span Вылет
+								.aviaboard__check-arrival
+						td(colspan=5).aviaboard__search
+							input(placeholder='Найти')
+						td.aviaboard__search-icon
+
 				thead.aviaboard__head
 					tr
 						each headItem in table.head
@@ -16,7 +32,7 @@ body
 								span= headItem.short
 
 				each item in table.data
-					tbody.aviaboard__tbody(class = item.departure ? 'aviaboard--departure' : 'aviaboard--arrival')
+					tbody.aviaboard__tbody(class = item.departure ? 'aviaboard__tbody--departure' : 'aviaboard__tbody--arrival')
 						tr.aviaboard__row
 							td.flight-number-text= item.flightNumber
 

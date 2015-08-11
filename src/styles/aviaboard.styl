@@ -1,15 +1,17 @@
-bg_color = #fdfffb
-border_color = #daccaf
-highlight_color = white
+bg_color ?= #fdfffb
+border_color ?= #daccaf
+highlight_color ?= white
 
-border1 = 1px solid border_color
-border2 = 2px solid border_color
+border1 ?= 1px solid border_color
+border2 ?= 2px solid border_color
+control_height ?= 40px
+head_height ?= 50px
 
-fast = .3s
+fast ?= .3s
 
-width_normal = 900px
-width_small = 800px
-width_very_small = 700px
+width_normal ?= 900px
+width_small ?= 800px
+width_very_small ?= 700px
 
 
 
@@ -73,8 +75,7 @@ nth-col-width(n, w)
 
 	////////////// wrappers //////////////
 	&__wrap
-		//- margin 50px auto
-		padding-top 60px
+		padding-top head_height + control_height
 		position relative
 		display inline-block
 
@@ -82,22 +83,63 @@ nth-col-width(n, w)
 		overflow hidden
 		border-radius 5px
 		border border2
-		// border-bottom solid 1px border_color
 		box-shadow 0 0 30px 0 rgba(107, 94, 76, .3)
 
 		&-size
-			min-height 60px
+			min-height head_height
 			max-height calc(100vh - 190px)
 			overflow-y auto
 
 
 
+	////////////// control //////////////
+	&__control
+		absolute top
+
+		&-button
+			cursor pointer
+			// rewrite cell width set by nth-col-width mixin
+			width 150px !important
+			min-width 150px !important
+
+			& > div
+				background-image linear-gradient(bottom, #eee3cb, #f2eed5)
+				height control_height
+				line-height control_height
+				width 150px
+				border-right border2
+				&:hover
+					background-image linear-gradient(bottom, #e4d9c4, #e2dfc9)
+
+				&:active
+					background-image linear-gradient(bottom, #ded6c4, #d9d6c3)
+
+	&__search
+		// rewrite cell width set by nth-col-width mixin
+		width 100% !important
+		input
+			width calc(100% - 20px)
+			height control_height
+			padding 0 0 0 20px
+			border 0
+			outline none
+			background #fbfaf2
+
+		&-icon
+			cursor pointer
+			background #fbfaf2 url(images/search.svg) no-repeat center
+			// rewrite cell width set by nth-col-width mixin
+			width 50px !important
+			min-width 50px !important
+
+
+
 	////////////// head //////////////
 	&__head
-		absolute top
+		absolute top control_height
 		tr
 			// head height
-			height 60px
+			height head_height
 
 	th
 		font-weight bolder
@@ -106,7 +148,7 @@ nth-col-width(n, w)
 		border border2
 
 		// reset because border already exists
-		border-top 0
+		// border-top 0
 		&:first-child
 			border-left 0
 		&:last-child
@@ -123,6 +165,15 @@ nth-col-width(n, w)
 
 
 	////////////// row //////////////
+	&__row
+		td
+			padding 5px 10px
+			border-right solid 1px border_color
+			// border-bottom @border-right
+			border-bottom @border-right
+			&:last-child
+				border-right 0
+
 	&__tbody
 		transition background fast
 		cursor pointer
@@ -158,14 +209,22 @@ nth-col-width(n, w)
 				margin 10px
 				max-height 150px
 
-	&__row
-		td
-			padding 5px 10px
-			border-right solid 1px border_color
-			// border-bottom @border-right
-			border-bottom @border-right
-			&:last-child
-				border-right 0
+
+
+		////////////// flight type //////////////
+		&--departure .flight-type
+			background url(images/departure.svg) no-repeat center
+			background-size auto 25px
+
+		&--arrival .flight-type
+			background url(images/arrival.svg) no-repeat center
+			background-size auto 25px
+
+	&__hide-arrival &__tbody--arrival
+		display none
+	&__hide-departure &__tbody--departure
+		display none
+
 
 
 
@@ -232,11 +291,26 @@ nth-col-width(n, w)
 
 
 
-	////////////// flight type //////////////
-	&--departure .flight-type
-		background url(images/departure.svg) no-repeat center
-		background-size auto 30px
+	&__check-departure, &__check-arrival
+		float right
+		size control_height
+		background url(images/checked.svg) no-repeat center
 
-	&--arrival .flight-type
+
+	&__hide-arrival &__check-arrival
+			background url(images/no-checked.svg) no-repeat center
+
+	&__hide-departure &__check-departure
+		background url(images/no-checked.svg) no-repeat center
+
+
+	&__button-departure
+		background url(images/departure.svg) no-repeat center
+	&__button-arrival
 		background url(images/arrival.svg) no-repeat center
-		background-size auto 30px
+
+	&__button-departure, &__button-arrival
+		size 50px control_height
+		float left
+		background-size auto 15px
+
