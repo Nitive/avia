@@ -1,8 +1,12 @@
-var rows = document.getElementsByClassName('aviaboard__tbody'),
-	aviaboard = document.getElementsByClassName('aviaboard')[0],
-	checkDeparture = document.getElementsByClassName('aviaboard__control-button--departure')[0],
-	checkArrival = document.getElementsByClassName('aviaboard__control-button--arrival')[0],
-	len = rows.length,
+var aviaboard = document.getElementsByClassName('aviaboard')[0],
+	rows = aviaboard.getElementsByClassName('aviaboard__tbody'),
+	checkDeparture = aviaboard.getElementsByClassName('aviaboard__control-button--departure')[0],
+	checkArrival = aviaboard.getElementsByClassName('aviaboard__control-button--arrival')[0];
+
+
+
+// разворачивать по клику
+var len = rows.length,
 	prev = null;
 
 for (var i = 0; i < len; i++) {
@@ -15,10 +19,15 @@ for (var i = 0; i < len; i++) {
 	}
 }
 
+
+
+//
 checkDeparture.onclick = function() {
-	aviaboard.classList.toggle('aviaboard__hide-departure');
+	aviaboard.classList.toggle('aviaboard--hide-departure');
+	aviaboard.classList.remove('aviaboard--hide-arrival');
 }
 
 checkArrival.onclick = function() {
-	aviaboard.classList.toggle('aviaboard__hide-arrival');
+	aviaboard.classList.toggle('aviaboard--hide-arrival');
+	aviaboard.classList.remove('aviaboard--hide-departure');
 }

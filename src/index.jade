@@ -7,7 +7,8 @@ head
 body
 	.aviaboard__wrap
 		.aviaboard__wrap-size
-			table.aviaboard
+			- classes = (table.hide.departure ? 'aviaboard--hide-departure' : '') + ' ' + (table.hide.arrival ? 'aviaboard--hide-arrival' : '')
+			table.aviaboard(class = classes)
 				thead.aviaboard__control
 					tr
 						td.aviaboard__control-button.aviaboard__control-button--departure
@@ -30,6 +31,12 @@ body
 							th
 								span= headItem.long
 								span= headItem.short
+
+				//- Чтобы таблица не схлопывалась, если нет данных
+				tbody: tr
+					- i = 0
+					while i++ < table.head.length
+						td
 
 				each item in table.data
 					tbody.aviaboard__tbody(class = item.departure ? 'aviaboard__tbody--departure' : 'aviaboard__tbody--arrival')
@@ -84,7 +91,7 @@ body
 										if item.note
 											.aviaboard__note
 												p
-													b: Примечание:
+													b= 'Примечание:'
 													!= item.note
 
 	script(src='app.js')

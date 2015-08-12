@@ -1,6 +1,10 @@
 {
 	"title": "Avia",
 	"table": {
+		"hide": {
+			"departure": false,
+			"arrival": false
+		},
 
 		"head": [
 			{
