@@ -5,6 +5,7 @@ head
 	title= title
 	link(rel="stylesheet", href="main.css")
 body
+	a(style = 'position: absolute; top: 0' href='index.html') Версия с раскрывающейся строкой (branch master)
 	.aviaboard__wrap
 		.aviaboard__wrap-size
 			- classes = (table.hide.departure ? 'aviaboard--hide-departure' : '') + ' ' + (table.hide.arrival ? 'aviaboard--hide-arrival' : '')
@@ -72,8 +73,9 @@ body
 								span.aviaboard__company-name= item.company.name
 								img.aviaboard__company-logo(src=item.company.logo height=50 width=50 alt="Логотип авиакомпании")
 
-						tr.aviaboard__full
+						tr
 							td(colspan=7)
+								.aviaboard__blackout
 								.aviaboard__info-block
 									img(src=item.company.logo height=100 width=100 alt="Логотип авиакомпании")
 									h3= item.from.city + (item.from.airport ? ' / ' + item.from.airport : '') + ' → ' + item.to.city + (item.to.airport ? ' / ' + item.to.airport : '')

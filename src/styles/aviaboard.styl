@@ -199,15 +199,15 @@ nth-col-width(n, w)
 		.aviaboard__info-block
 			transition-property max-height, margin
 			transition-duration fast
-		&--opened
-			td
-				border-bottom border1
+		// &--opened
+		// 	td
+		// 		border-bottom border1
 
-			// rewrite hover background
-			background #fdfdfa !important
-			.aviaboard__info-block
-				margin 10px
-				max-height 150px
+		// 	// rewrite hover background
+		// 	background #fdfdfa !important
+		// 	.aviaboard__info-block
+		// 		margin 10px
+		// 		max-height 150px
 
 
 
@@ -229,24 +229,41 @@ nth-col-width(n, w)
 
 
 	////////////// opened block //////////////
+
 	&__info-block
+		width 400px
+		position absolute
+		top calc(50% - 100px)
+		left s('calc(50% - %s)', @width / 2)
+		display none
+		z-index 1
+
 		font-size .9em
 		word-break normal
 		text-align left
-		max-height 0
-		overflow-y hidden
-		margin-left 10px
+		background #fcfef7
+		padding 10px
+		border border2
+		border-radius 5px
+		box-shadow 0 0 30px 10px alpha(#4a4240, .5)
+
+	&__blackout
+		display none
+		fixed top left
+		background alpha(black, .6)
+		height 100vh
+		width 100vw
+		z-index 1
+
+	&__tbody--opened &__info-block
+		display inline-block
+	&__tbody--opened &__blackout
+		display block
 
 	&__data
-		vertical-align middle
 		display inline-block
-		width calc(100% - 100px)
-
-	&__info, &__note
-		display inline-block
-		width 50%
-	&__info:only-child
-		width 100% !important
+	&__note
+		margin-top 10px
 
 
 
