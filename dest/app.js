@@ -21,7 +21,6 @@ for (var i = 0; i < len; i++) {
 
 
 
-//
 checkDeparture.onclick = function() {
 	aviaboard.classList.toggle('aviaboard--hide-departure');
 	aviaboard.classList.remove('aviaboard--hide-arrival');
@@ -30,4 +29,26 @@ checkDeparture.onclick = function() {
 checkArrival.onclick = function() {
 	aviaboard.classList.toggle('aviaboard--hide-arrival');
 	aviaboard.classList.remove('aviaboard--hide-departure');
+}
+
+
+// при наведении на ячейку подсвечивается столбец
+setColor = function (color, col) {
+	var tds = document.querySelectorAll('.column_' + col);
+	for (var i in tds) {
+		if (typeof(tds[i]) === 'object') {
+			tds[i].style.backgroundColor = color;
+		}
+	}
+}
+
+for (var j = 1; j <= 7; j++) {
+	var elements = document.querySelectorAll('.column_' + j);
+	for (var i in elements) {
+		e = elements[i];
+		if (typeof(e) === 'object') {
+			e.onmouseover = setColor.bind(null, 'white', j);
+			e.onmouseleave = setColor.bind(null, '', j);
+		}
+	}
 }

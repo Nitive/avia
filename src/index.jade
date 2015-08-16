@@ -42,34 +42,34 @@ body
 				each item in table.data
 					tbody.aviaboard__tbody(class = item.departure ? 'aviaboard__tbody--departure' : 'aviaboard__tbody--arrival')
 						tr.aviaboard__row
-							td.flight-number-text= item.flightNumber
+							td.column_1.flight-number-text= item.flightNumber
 
 							if item.departure
-								td
+								td.column_2
 									span= item.to.city
 									if item.to.airport
 										span.aviaboard__airport= item.to.airport
-								td.flight-type
+								td.column_3.flight-type
 
 							else
-								td
+								td.column_2
 									span= item.from.city
 									if item.from.airport
 										span.aviaboard__airport= item.from.airport
-								td.flight-type
+								td.column_3.flight-type
 
-							td
+							td.column_4
 								.aviaboard__time= item.time
 								.aviaboard__date= item.date
 
-							td(class = 'flight-status--' + item.status.type)
+							td.column_5(class = 'flight-status--' + item.status.type)
 								= item.status.text
 
-							td.aviaboard__plane
+							td.column_6.aviaboard__plane
 								span= item.plane.long
 								span= item.plane.short
 
-							td.aviaboard__company
+							td.column_7.aviaboard__company
 								span.aviaboard__company-name= item.company.name
 								img.aviaboard__company-logo(src=item.company.logo height=50 width=50 alt="Логотип авиакомпании")
 
