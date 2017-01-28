@@ -9,21 +9,21 @@
   "author": "Samoilow Maxim <nitive@icloud.com>",
   "license": "MIT",
   "devDependencies": {
-    "autoprefixer-core": "^5.2.1",
+    "autoprefixer-core": "^6.0.1",
     "browser-sync": "^2.8.2",
     "coffee-script": "^1.9.3",
     "gulp-combine-media-queries": "^0.2.0",
     "gulp-cssmin": "^0.1.7",
     "gulp-data": "^1.2.0",
-    "gulp-if": "^1.2.5",
+    "gulp-if": "^2.0.2",
     "gulp-jade": "^1.1.0",
-    "gulp-notify": "^2.2.0",
+    "gulp-notify": "^3.0.0",
     "gulp-plumber": "^1.0.1",
-    "gulp-postcss": "^5.1.10",
-    "gulp-sourcemaps": "^1.5.2",
+    "gulp-postcss": "^6.3.0",
+    "gulp-sourcemaps": "^2.4.0",
     "gulp-stylus": "^2.0.6",
     "nib": "^1.1.0",
-    "normalize-styl": "^3.0.3",
-    "yargs": "^3.18.0"
+    "normalize-styl": "^4.1.1",
+    "yargs": "^6.6.0"
   }
 }
